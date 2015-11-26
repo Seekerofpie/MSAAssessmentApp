@@ -1,0 +1,84 @@
+﻿@model MSAAssessmentApp.Models.Course
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Edit</h2>
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <h4>Course</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.CourseID)
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Title, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Title, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Title, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Points, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Points, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Points, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="col-md-offset-2">
+            <table class="table">
+                <tr>
+                    <th>Assignments</th>
+                    <th>Status</th>
+                    <th>Due Date</th>
+                    <th>Percentage</th>
+                    <th>@Html.ActionLink("Add New Assignment", "Create", "Assignments")</th>
+                </tr>
+                @foreach (var item in Model.Assignments)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Name)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.CurrentStatus)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.DueDate)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Percentage)
+                        </td>
+                        <td>
+                            @Html.ActionLink("Edit", "Edit", "Assignments", new { id = item.AssignmentID }, null) |
+                            @Html.ActionLink("Details", "Details", "Assignments", new { id = item.AssignmentID }, null) |
+                            @Html.ActionLink("Delete", "Delete", "Assignments", new { id = item.AssignmentID }, null)
+                        </td>
+                    </tr>
+                }
+            </table>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Save Changes" class="btn btn-primary" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
