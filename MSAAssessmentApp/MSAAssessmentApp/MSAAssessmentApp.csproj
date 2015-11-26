@@ -253,9 +253,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201511260942539_InitialCreate.cs" />
-    <Compile Include="Migrations\201511260942539_InitialCreate.Designer.cs">
-      <DependentUpon>201511260942539_InitialCreate.cs</DependentUpon>
+    <Compile Include="Migrations\201511261233001_d.cs" />
+    <Compile Include="Migrations\201511261233001_d.Designer.cs">
+      <DependentUpon>201511261233001_d.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\AppDbConfiguration.cs" />
     <Compile Include="Migrations\SchoolConfiguration.cs" />
@@ -272,6 +272,7 @@
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\sweetalert.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -296,6 +297,7 @@
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
+    <Content Include="Scripts\sweetalert.min.js" />
     <Content Include="Scripts\_references.js" />
     <Content Include="Views\Home\50g4mgm6.bmp" />
     <Content Include="Web.config" />
@@ -369,8 +371,8 @@
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201511260942539_InitialCreate.resx">
-      <DependentUpon>201511260942539_InitialCreate.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201511261233001_d.resx">
+      <DependentUpon>201511261233001_d.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

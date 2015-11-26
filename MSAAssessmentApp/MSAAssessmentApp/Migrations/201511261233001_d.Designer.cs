@@ -7,13 +7,13 @@ namespace MSAAssessmentApp.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class InitialCreate : IMigrationMetadata
+    public sealed partial class d : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(InitialCreate));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(d));
         
         string IMigrationMetadata.Id
         {
-            get { return "201511260942539_InitialCreate"; }
+            get { return "201511261233001_d"; }
         }
         
         string IMigrationMetadata.Source

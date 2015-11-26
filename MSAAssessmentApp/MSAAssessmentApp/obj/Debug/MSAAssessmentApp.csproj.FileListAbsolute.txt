@@ -95,5 +95,6 @@ C:\Users\Niclas\Documents\Visual Studio 2015\Projects\MSAAssessmentApp\MSAAssess
 C:\Users\Niclas\Documents\Visual Studio 2015\Projects\MSAAssessmentApp\MSAAssessmentApp\bin\System.Web.Cors.dll
 C:\Users\Niclas\Documents\Visual Studio 2015\Projects\MSAAssessmentApp\MSAAssessmentApp\bin\System.Web.Http.Cors.dll
 C:\Users\Niclas\Documents\Visual Studio 2015\Projects\MSAAssessmentApp\MSAAssessmentApp\bin\System.Web.Http.Cors.xml
-C:\Users\Niclas\Documents\Visual Studio 2015\Projects\MSAAssessmentApp\MSAAssessmentApp\obj\Debug\MSAAssessmentApp.Migrations.InitialCreate.resources
+C:\Users\Niclas\Documents\Visual Studio 2015\Projects\MSAAssessmentApp\MSAAssessmentApp\obj\Debug\MSAAssessmentApp.csprojResolveAssemblyReference.cache
+C:\Users\Niclas\Documents\Visual Studio 2015\Projects\MSAAssessmentApp\MSAAssessmentApp\obj\Debug\MSAAssessmentApp.Migrations.d.resources
 C:\Users\Niclas\Documents\Visual Studio 2015\Projects\MSAAssessmentApp\MSAAssessmentApp\obj\Debug\MSAAssessmentApp.csproj.GenerateResource.Cache
