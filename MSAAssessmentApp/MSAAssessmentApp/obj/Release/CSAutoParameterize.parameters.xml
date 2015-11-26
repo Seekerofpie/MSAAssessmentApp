@@ -1,9 +1,0 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<parameters>
-  <parameter name="SchoolContext-Web.config Connection String" description="SchoolContext Connection String used in web.config by the application to access the database." defaultValue="Database=MSAUniNiclasDatabase;Data Source=au-cdbr-azure-southeast-a.cloudapp.net;User Id=be82f3a658f0ca;Password=5efa174c" tags="SqlConnectionString">
-    <parameterEntry kind="XmlFile" scope="C:\\Users\\Niclas\\Documents\\Visual\ Studio\ 2015\\Projects\\MSAAssessmentApp\\MSAAssessmentApp\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='SchoolContext']/@connectionString" />
-  </parameter>
-  <parameter name="DefaultConnection-Web.config Connection String" description="DefaultConnection Connection String used in web.config by the application to access the database." defaultValue="Database=MSAUniDatabase;Data Source=au-cdbr-azure-southeast-a.cloudapp.net;User Id=b6489f6e7cb245;Password=4c66a5e0" tags="SqlConnectionString">
-    <parameterEntry kind="XmlFile" scope="C:\\Users\\Niclas\\Documents\\Visual\ Studio\ 2015\\Projects\\MSAAssessmentApp\\MSAAssessmentApp\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='DefaultConnection']/@connectionString" />
-  </parameter>
-</parameters>
