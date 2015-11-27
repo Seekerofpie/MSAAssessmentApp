@@ -40,7 +40,8 @@
                     <th>Status</th>
                     <th>Due Date</th>
                     <th>Percentage</th>
-                    <th>@Html.ActionLink("Add New Assignment", "Create", "Assignments")</th>
+                    <th>@Html.ActionLink("Add New Assignment", "Create", "Assignments", new { id = Model.CourseID }, null)</th>
+
                 </tr>
                 @foreach (var item in Model.Assignments)
                 {

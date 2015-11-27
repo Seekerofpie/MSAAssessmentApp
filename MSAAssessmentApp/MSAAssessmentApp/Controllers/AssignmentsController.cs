@@ -38,10 +38,16 @@ namespace MSAAssessmentApp.Controllers
         }
 
         // GET: Assignments/Create
-        public ActionResult Create()
+        public ActionResult Create(int? id)
         {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Assignment a = new Assignment();
+            a.CourseID = id.Value;
             ViewBag.CourseID = new SelectList(db.Courses, "CourseID", "Title");
-            return View();
+            return View(a);
         }
 
         // POST: Assignments/Create
@@ -55,9 +61,8 @@ namespace MSAAssessmentApp.Controllers
             {
                 db.Assignments.Add(assignment);
                 db.SaveChanges();
-                return Content("<script language='javascript' type='text/javascript'>history.go(-2);</script>");
+                return Content("<script language='javascript' type='text/javascript'>window.location = \"../../Courses/Details/" + assignment.CourseID + "\";</script>");
             }
-
             ViewBag.CourseID = new SelectList(db.Courses, "CourseID", "Title", assignment.CourseID);
             return View(assignment);
         }
@@ -89,7 +94,7 @@ namespace MSAAssessmentApp.Controllers
             {
                 db.Entry(assignment).State = EntityState.Modified;
                 db.SaveChanges();
-                return Content("<script language='javascript' type='text/javascript'>history.go(-2);</script>");
+                return Content("<script language='javascript' type='text/javascript'>window.location = \"../../Courses/Details/" + assignment.CourseID + "\";</script>");
             }
             ViewBag.CourseID = new SelectList(db.Courses, "CourseID", "Title", assignment.CourseID);
             return View(assignment);
@@ -118,7 +123,7 @@ namespace MSAAssessmentApp.Controllers
             Assignment assignment = db.Assignments.Find(id);
             db.Assignments.Remove(assignment);
             db.SaveChanges();
-            return Content("<script language='javascript' type='text/javascript'>history.go(-2);</script>");
+            return Content("<script language='javascript' type='text/javascript'>window.location = \"../../Courses/Details/" + assignment.CourseID + "\";</script>");
         }
 
         protected override void Dispose(bool disposing)

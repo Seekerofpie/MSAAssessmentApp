@@ -1,0 +1,152 @@
+﻿    <!doctype html>
+    <html lang="en">
+    <head>
+      <meta charset="utf-8">
+      <title>Conway's Game of Life</title>
+      <meta name="description" content="The Brand New Web Site">
+      <meta name="author" content="Barattalo.it">
+
+        <script src="../Scripts/jquery-1.10.2.min.js"></script>
+        <script src="../Scripts/bootstrap.min.js"></script>
+        <link href="../Content/bootstrap.min.css" rel="stylesheet" />
+
+	  	<script language="Javascript" type="text/javascript">
+		var SIZE = 20;
+		var CELLSIZE = 10;
+		var INDEXMULTIPLIER = 10*SIZE;
+		var buttons;
+		var tempButtons;
+		
+		function update(){
+				
+			tempButtons = new Array(SIZE);
+			for (var i = 0; i < SIZE; i++) {
+				tempButtons[i] = new Array(SIZE);
+			}
+			
+			
+			//go through buttons
+			for(i = 0; i < SIZE; i++){
+				for(j = 0; j < SIZE; j++){
+					var neighbours = ((i > 0 && j > 0) ? (buttons[i-1][j-1] ? 1 : 0) : 0) + ((i > 0) ? (buttons[i-1][j] ? 1 : 0) : 0) + ((i > 0 && j < SIZE-1) ? (buttons[i-1][j+1] ? 1 : 0) : 0) + ((j > 0) ? (buttons[i][j-1] ? 1 : 0) : 0) + 
+						((j < SIZE-1) ? (buttons[i][j+1] ? 1 : 0) : 0) + ((i < SIZE-1 && j > 0) ? (buttons[i+1][j-1] ? 1 : 0) : 0) + ((i < SIZE-1) ? (buttons[i+1][j] ? 1 : 0) : 0) + ((i < SIZE-1 && j < SIZE-1) ? (buttons[i+1][j+1] ? 1 : 0) : 0);
+						
+					
+					var but = document.getElementById('b' + i + '/' + j);
+					if(neighbours < 2 || neighbours > 3){
+						but.style.background = "white";
+						tempButtons[i][j] = false;
+					} else if (neighbours == 3) {
+						but.style.background = "yellow";
+						tempButtons[i][j] = true;
+					} else {
+						tempButtons[i][j] = buttons[i][j];
+					}
+				
+				}
+			}
+			
+			buttons = tempButtons;
+		}
+		
+		function click(id){
+			var but = document.getElementById(id);
+			var i = Math.floor(parseInt(but.name)/INDEXMULTIPLIER);
+			var j = but.name % INDEXMULTIPLIER;
+			
+			if(buttons[i][j] == true){
+				but.style.background = "white";
+				buttons[i][j] = false;
+			}else{
+				but.style.background = "yellow";
+				buttons[i][j] = true;
+			}
+		}
+		
+		function generateButtons(){
+			SIZE = parseInt(document.getElementById("SizeText").value);
+			
+			buttons = new Array(SIZE);
+			for (var i = 0; i < SIZE; i++) {
+				buttons[i] = new Array(SIZE);
+			}
+		
+			var body = document.getElementById("Mainbody");	
+			body.innerHTML = "";
+			
+			for(var i = 0; i < SIZE; i++){
+				var tr = document.createElement("tr");
+				tr.setAttribute("id", "row" + i);
+				tr.setAttribute("class", "gridRowCol");
+				body.appendChild(tr);
+				
+				for(var j = 0; j < SIZE; j++){
+					td = document.createElement("td");
+					td.setAttribute("class", "gridRowCol");
+					td.innerHTML = '<input type="button" id="b' + i + '/' + j + '" class="gridbutton btn-block" name="' + (INDEXMULTIPLIER * i + j) + '"/>';
+					td.onclick = (function() {
+						var currentI = i;
+						var currentJ = j;
+						return function() { 
+							click('b' + currentI + '/' + currentJ);
+						}
+					})();
+					buttons[i][j] = false;
+					tr.appendChild(td);
+				}	
+			}
+		}
+		
+		</script>
+        <style>
+            .gridbutton {
+                background-color: white;
+                border-style: solid;
+                border-color: gray;
+                border-width: 1px;
+                margin: 0;
+                width: 20px !important;
+                height: 20px !important;
+            }
+
+            .gridRowCol {
+                border-width: 0;
+                margin: 0;
+                padding: 0;
+                height: 20px;
+            }
+        </style>
+		
+	
+    </head>
+    <body onLoad="generateButtons()">
+        <div class="form-horizontal">
+            <h1>Welcome to Conway's Game of Life (a really inefficient version)</h1>
+            <div class="form-group col-md-10">
+                <div class="form-group col-md-3">
+                    <button type="button" class="btn btn-default" onclick="window.location.href = '../Chat'">Return</button>
+                    <button type="button" class="btn btn-primary" onclick="update()">Next Generation</button>
+                </div>
+                
+                <div class="form-group col-md-6">
+                    <div class="form-group col-md-2">
+                        <label class="control-label">Set Grid Size:</label>
+                    </div>
+                    <div class="form-group col-md-3">
+                        <input type="text" class="form-control" id="SizeText" value="20">
+                    </div>
+                    <button type="button" class="btn btn-default btn-danger" onclick="generateButtons()">Re-Generate</button>
+               </div>
+            </div>
+        </div>
+                
+
+        <div class="col-md-10">
+            <table id="Maintable">
+                <tbody id="Mainbody"></tbody>
+            </table>
+        </div>
+
+
+    </body>
+    </html>
